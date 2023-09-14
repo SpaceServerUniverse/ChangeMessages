@@ -2,15 +2,13 @@ package space.yurisi.changemessages;
 
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
-import space.yurisi.changemessages.event.JoinEvent;
-import space.yurisi.changemessages.event.QuitEvent;
+import space.yurisi.changemessages.event.EventManager;
 
 public final class ChangeMessages extends JavaPlugin {
 
     @Override
     public void onEnable() {
-        Bukkit.getPluginManager().registerEvents(new JoinEvent(), this);
-        Bukkit.getPluginManager().registerEvents(new QuitEvent(), this);
+        new EventManager(this);
     }
 
     @Override
