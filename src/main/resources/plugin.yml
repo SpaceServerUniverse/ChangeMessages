@@ -1,0 +1,4 @@
+name: ChangeMessages
+version: '${project.version}'
+main: space.yurisi.changemessages.ChangeMessages
+api-version: '1.20'
