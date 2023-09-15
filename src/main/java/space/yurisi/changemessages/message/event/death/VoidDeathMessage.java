@@ -7,6 +7,11 @@ import space.yurisi.changemessages.event.damage.DamageEventManager;
 public final class VoidDeathMessage extends DeathMessage{
 
     public VoidDeathMessage(Player player, DamageEventManager manager) {
+        super(player, manager);
+    }
+
+    @Override
+    protected void init(Player player, DamageEventManager manager) {
         if (player.getName().equals(manager.getKillerPlayer(player).getName())) {
             this.messages = new Component[]{
                     Component.text("§a§l[戦闘型AI] §c" + player.getName()+ "§a は消滅した"),

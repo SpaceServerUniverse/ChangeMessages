@@ -10,6 +10,11 @@ import java.util.Objects;
 
 public final class ProjectileDeathMessage extends DeathMessage {
     public ProjectileDeathMessage(Player player, DamageEventManager manager) {
+        super(player, manager);
+    }
+
+    @Override
+    protected void init(Player player, DamageEventManager manager) {
         if (player.getName().equals(manager.getKillerPlayer(player).getName())) {
             this.messages = new Component[]{
                     Component.text("§a§l[死亡管理AI] §c" + player.getName() + "§a が 死亡した")
@@ -18,14 +23,7 @@ public final class ProjectileDeathMessage extends DeathMessage {
         }
 
         Player killer = manager.getKillerPlayer(player);
-        ItemStack hand_item = killer.getInventory().getItemInMainHand();
-        String item;
-        if (hand_item.getItemMeta().hasDisplayName()) {
-            Component displayName = Objects.requireNonNull(hand_item.getItemMeta().displayName());
-            item = PlainTextComponentSerializer.plainText().serialize(displayName);
-        } else {
-            item = hand_item.getType().name().replace("_", " ").toLowerCase();
-        }
+        String item = getItemName(killer);
 
         this.messages = new Component[]{
                 Component.text("§a§l[戦闘型AI] §c" + killer.getName() + "§a が §b" + player.getName() + "§a を -§d" + item + "§a- で射抜きました"),
