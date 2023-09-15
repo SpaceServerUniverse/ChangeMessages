@@ -4,7 +4,6 @@ import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.serializer.plain.PlainTextComponentSerializer;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
-import space.yurisi.changemessages.event.damage.DamageEventManager;
 
 import java.util.Objects;
 import java.util.Random;
@@ -17,8 +16,8 @@ public class DeathMessage {
         init(player);
     }
 
-    public DeathMessage(Player player, DamageEventManager manager){
-        init(player, manager);
+    public DeathMessage(Player player, Player killer){
+        init(player, killer);
     }
 
     private int getRandom(Component[] components){
@@ -42,7 +41,7 @@ public class DeathMessage {
 
     protected void init(Player player){}
 
-    protected void init(Player player, DamageEventManager manager){}
+    protected void init(Player player, Player killer){}
 
 
 }
