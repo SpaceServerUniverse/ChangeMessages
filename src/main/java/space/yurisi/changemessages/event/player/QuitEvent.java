@@ -1,4 +1,4 @@
-package space.yurisi.changemessages.event;
+package space.yurisi.changemessages.event.player;
 
 import net.kyori.adventure.text.Component;
 import org.bukkit.entity.Player;

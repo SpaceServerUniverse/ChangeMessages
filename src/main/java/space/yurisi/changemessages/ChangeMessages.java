@@ -1,6 +1,5 @@
 package space.yurisi.changemessages;
 
-import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 import space.yurisi.changemessages.event.EventManager;
 
