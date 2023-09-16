@@ -2,16 +2,19 @@ package space.yurisi.changemessages.event.player;
 
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.PlayerDeathEvent;
+import org.eclipse.sisu.Priority;
 import space.yurisi.changemessages.message.event.player_death.*;
 
 import javax.annotation.Nullable;
 import java.util.Objects;
 
 public class DeathEvent implements Listener {
-    @EventHandler
+
+    @EventHandler(priority = EventPriority.LOWEST)
     public void onDeath(PlayerDeathEvent event) {
         Player player = event.getPlayer();
         Player killer = event.getEntity().getKiller();

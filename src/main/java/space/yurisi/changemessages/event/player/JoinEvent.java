@@ -16,20 +16,27 @@ public final class JoinEvent implements Listener {
 
     private final Config config;
 
-    public JoinEvent(Config config){
+    public JoinEvent(Config config) {
         this.config = config;
     }
 
     @EventHandler
     public void onJoin(PlayerJoinEvent event) {
         Player player = event.getPlayer();
-        player.sendTitle("§eWelcome to SpaceServer","- Universe -");
-        event.joinMessage(getCustomUserMessage(player));
+        player.sendTitle("§eWelcome to SpaceServer", "- Universe -");
+        if (!player.hasPlayedBefore()) {
+            event.joinMessage(getFirstJoinMessage(player));
+            return;
+        }
+        event.joinMessage(getUserCustomJoinMessage(player));
     }
 
-    private Component getCustomUserMessage(Player player){
-        Bukkit.getLogger().info(player.getName());
-        if(!config.existsCustomJoinMessage(player)){
+    private Component getFirstJoinMessage(Player player) {
+        return Component.text("§a[入室] §a§l 初in §r§bの§c" + player.getName() + "§b様が§a§lオンライン§r§bになりました");
+    }
+
+    private Component getUserCustomJoinMessage(Player player) {
+        if (!config.existsCustomJoinMessage(player)) {
             return Component.text(
                     "§a[入室] §c" + player.getName() + "§e様が§a§lオンライン§r§eになりました"
             );
