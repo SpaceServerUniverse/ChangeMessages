@@ -1,0 +1,4 @@
+# プレイヤーネーム: "入室メッセージ"
+# BEユーザーのみBE_をつける
+"PlayerName": "JoinMessage"
+"BE_PlayerName": "JoinMessage"

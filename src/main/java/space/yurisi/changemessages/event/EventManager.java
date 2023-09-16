@@ -17,7 +17,7 @@ public class EventManager {
     }
 
     private void init(){
-        Bukkit.getPluginManager().registerEvents(new JoinEvent(), this.main);
+        Bukkit.getPluginManager().registerEvents(new JoinEvent(this.main.getConfigClass()), this.main);
         Bukkit.getPluginManager().registerEvents(new QuitEvent(), this.main);
         Bukkit.getPluginManager().registerEvents(new DeathEvent(), this.main);
         Bukkit.getPluginManager().registerEvents(new DamageByEntityEvent(), this.main);
