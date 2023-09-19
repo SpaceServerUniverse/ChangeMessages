@@ -14,7 +14,7 @@ import java.util.Objects;
 
 public class DeathEvent implements Listener {
 
-    @EventHandler(priority = EventPriority.LOWEST)
+    @EventHandler(priority = EventPriority.MONITOR)
     public void onDeath(PlayerDeathEvent event) {
         Player player = event.getPlayer();
         Player killer = event.getEntity().getKiller();
