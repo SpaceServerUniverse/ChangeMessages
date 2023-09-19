@@ -18,15 +18,26 @@ public class BasePlayerDeathEventMessage extends BaseEventMessage {
         init(player, killer);
     }
 
+    private boolean isNullItem(ItemStack item){
+        if(item == null) return true;
+        if(item.getType().name().equals("AIR")) return true;
+        return false;
+    }
+
 
     protected String getItemName(Player killer) {
         ItemStack hand_item = killer.getInventory().getItemInMainHand();
+        if(isNullItem(hand_item)) {
+            return "素手";
+        }
         if (hand_item.getItemMeta().hasDisplayName()) {
             Component displayName = Objects.requireNonNull(hand_item.getItemMeta().displayName());
             return PlainTextComponentSerializer.plainText().serialize(displayName);
         }
         return hand_item.getType().name().replace("_", " ").toLowerCase();
     }
+
+
 
     protected void init(Player player){}
 
